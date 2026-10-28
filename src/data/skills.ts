@@ -58,40 +58,82 @@ const strategy = icon('<path d="M5 20h14M7 17h10l-1-6H8l-1 6Zm1-6-2-5 4 2 2-5 2 
 
 // Names come from the supplied skills list. Products without a Simple Icons entry
 // use a neutral lettermark; general skills use outline symbols.
-export const hardSkills: Skill[] = [
-  symbol('SD-WAN', network),
-  symbol('Firewalls', shield),
-  symbol('Monitoreo de redes', monitor),
-  letters('Versa Director', 'VD', '#294a8d'),
-  brand('Cisco Prime', siCisco),
-  letters('PuTTY', 'P', '#2b4f81'),
-  letters('ServiceNow', 'SN', '#2e8068'),
-  letters('Word', 'W', '#185abd'),
-  letters('Excel', 'X', '#107c41'),
-  brand('Git', siGit),
-  brand('GitHub', siGithub),
-  brand('Trello', siTrello),
-  symbol('Scrum', cycle),
-  brand('TypeScript', siTypescript),
-  brand('JavaScript', siJavascript, '#9a7900'),
-  brand('Python', siPython),
-  symbol('SQL', database),
-  brand('React', siReact, '#087ea4'),
-  brand('Astro', siAstro),
-  brand('HTML', siHtml5),
-  brand('CSS', siCss),
-  brand('Tailwind CSS', siTailwindcss),
-  brand('LabVIEW', siLabview, '#b88700'),
-  brand('PLC Siemens', siSiemens),
-  brand('Arduino', siArduino),
-  symbol('Circuitos electrónicos', circuit),
-  symbol('Circuitos neumáticos', pneumatic),
-  letters('SolidWorks', 'SW', '#d52430'),
-  brand('AutoCAD', siAutocad),
-  symbol('Blockchain', blockchain),
-  brand('Bitcoin', siBitcoin),
-  brand('Ethereum', siEthereum),
-  symbol('CFD trading', chart),
+export const hardSkillGroups: { id: string; title: string; skills: Skill[] }[] = [
+  {
+    id: 'industrial-networks',
+    title: 'Industrial Networks & Networking',
+    skills: [
+      symbol('SD-WAN', network),
+      symbol('Firewalls', shield),
+      symbol('Monitoreo de redes', monitor),
+      letters('Versa Director', 'VD', '#294a8d'),
+      brand('Cisco Prime', siCisco),
+      letters('PuTTY', 'P', '#2b4f81'),
+      letters('ServiceNow', 'SN', '#2e8068'),
+    ],
+  },
+  {
+    id: 'version-control-tools',
+    title: 'Version Control & Other Tools',
+    skills: [
+      letters('Word', 'W', '#185abd'),
+      letters('Excel', 'X', '#107c41'),
+      brand('Git', siGit),
+      brand('GitHub', siGithub),
+      brand('Trello', siTrello),
+      symbol('Scrum', cycle),
+    ],
+  },
+  {
+    id: 'programming-languages',
+    title: 'Programming Languages',
+    skills: [
+      brand('TypeScript', siTypescript),
+      brand('JavaScript', siJavascript, '#9a7900'),
+      brand('Python', siPython),
+      symbol('SQL', database),
+    ],
+  },
+  {
+    id: 'web-development',
+    title: 'Web Development',
+    skills: [
+      brand('React', siReact, '#087ea4'),
+      brand('Astro', siAstro),
+      brand('HTML', siHtml5),
+      brand('CSS', siCss),
+      brand('Tailwind CSS', siTailwindcss),
+    ],
+  },
+  {
+    id: 'automation-control',
+    title: 'Automation and Control',
+    skills: [
+      brand('LabVIEW', siLabview, '#b88700'),
+      brand('PLC Siemens', siSiemens),
+      brand('Arduino', siArduino),
+      symbol('Circuitos electrónicos', circuit),
+      symbol('Circuitos neumáticos', pneumatic),
+    ],
+  },
+  {
+    id: 'cad-design',
+    title: 'CAD Design',
+    skills: [
+      letters('SolidWorks', 'SW', '#d52430'),
+      brand('AutoCAD', siAutocad),
+    ],
+  },
+  {
+    id: 'blockchain-knowledge',
+    title: 'Blockchain Knowledge',
+    skills: [
+      symbol('Blockchain', blockchain),
+      brand('Bitcoin', siBitcoin),
+      brand('Ethereum', siEthereum),
+      symbol('CFD trading', chart),
+    ],
+  },
 ];
 
 export const softSkills: Skill[] = [
