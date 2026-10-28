@@ -1,16 +1,92 @@
 ---
+import '../styles/global.css';
+
+const skillTiles = [1, 2, 3, 4, 5, 6];
+const projects = [1, 2];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portafolio de Jorge Adrián Guillén Barraza. Proyectos, experiencia y habilidades." />
+    <title>Jorge Adrián Guillén Barraza | Portafolio</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="site-name" href="#inicio">Ing. Jorge Adrián Guillén Barraza</a>
+    </header>
+
+    <main class="portfolio-grid" id="inicio">
+      <aside class="profile-column" aria-labelledby="profile-heading">
+        <div class="column-intro">
+          <span class="eyebrow">Sobre mí</span>
+          <h1 id="profile-heading">Hola, soy Jorge.</h1>
+        </div>
+
+        <div class="portrait-placeholder" role="img" aria-label="Retrato decorativo con las iniciales JG">
+          <span class="portrait-initials" aria-hidden="true">JG</span>
+        </div>
+
+        <section class="side-section" aria-labelledby="links-heading">
+          <h2 id="links-heading">Enlaces</h2>
+          <div class="social-placeholders" aria-hidden="true">
+            <span></span>
+            <span></span>
+          </div>
+        </section>
+
+        <section class="side-section" aria-labelledby="experience-heading">
+          <h2 id="experience-heading">Experiencia</h2>
+          <div class="experience-placeholder" aria-hidden="true">
+            <span class="placeholder-icon" aria-hidden="true">✦</span>
+            <span class="skeleton-line"></span>
+            <span class="skeleton-line short"></span>
+          </div>
+        </section>
+      </aside>
+
+      <section class="projects-column" aria-labelledby="projects-heading">
+        <div class="section-heading">
+          <span class="eyebrow">Mi trabajo</span>
+          <h2 id="projects-heading">Proyectos</h2>
+        </div>
+
+        <div class="project-list">
+          {projects.map((project) => (
+            <article class="project-card" aria-label={'Proyecto visual ' + project}>
+              <div class="project-preview" aria-hidden="true">
+                <div class="preview-toolbar" aria-hidden="true">
+                  <span class="preview-dots"><i></i><i></i><i></i></span>
+                  <span class="preview-address"></span>
+                </div>
+                <div class="preview-content" aria-hidden="true">
+                  <span class="preview-picture"></span>
+                  <span class="preview-block"></span>
+                  <span class="preview-block short"></span>
+                </div>
+              </div>
+              <div class="project-body" aria-hidden="true">
+                <span class="skeleton-line"></span>
+                <span class="skeleton-line short"></span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <aside class="skills-column" aria-labelledby="skills-heading">
+        <div class="section-heading skills-heading">
+          <span class="eyebrow">Herramientas</span>
+          <h2 id="skills-heading">Habilidades</h2>
+        </div>
+        <div class="skills-grid" aria-hidden="true">
+          {skillTiles.map((tile) => (
+            <div class={'skill-card skill-' + tile}></div>
+          ))}
+        </div>
+      </aside>
+    </main>
+  </body>
 </html>
