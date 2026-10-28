@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
+import { skills } from '../data/skills';
 
-const skillTiles = [1, 2, 3, 4, 5, 6];
 const projects = [1, 2];
 ---
 
@@ -81,11 +81,18 @@ const projects = [1, 2];
           <span class="eyebrow">Herramientas</span>
           <h2 id="skills-heading">Habilidades</h2>
         </div>
-        <div class="skills-grid" aria-hidden="true">
-          {skillTiles.map((tile) => (
-            <div class={'skill-card skill-' + tile}></div>
+        <ul class="skills-grid">
+          {skills.map((skill) => (
+            <li class="skill-card" style={'--skill-color: ' + skill.color}>
+              {skill.svg ? (
+                <span class="skill-logo" aria-hidden="true" set:html={skill.svg}></span>
+              ) : (
+                <span class="skill-logo skill-lettermark" aria-hidden="true">{skill.initials}</span>
+              )}
+              <span class="skill-name">{skill.name}</span>
+            </li>
           ))}
-        </div>
+        </ul>
       </aside>
     </main>
   </body>

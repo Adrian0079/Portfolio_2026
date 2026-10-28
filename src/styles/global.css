@@ -153,37 +153,59 @@ h2 { margin-bottom: 10px; font-size: clamp(1.5rem, 1.8vw, 2rem); }
 .project-body .skeleton-line { background: #d5dfef; }
 
 .skills-heading { margin-bottom: 25px; }
-.skills-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 .skill-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 130px;
+  padding: 14px 8px;
+  border: 1px solid #e9eef7;
+  border-radius: 12px;
+  color: #18304e;
+  background: #fff;
+  box-shadow: 0 7px 15px #21477820;
+}
+.skill-logo {
   display: grid;
   place-items: center;
-  min-height: 126px;
-  padding: 12px;
-  border: 1px solid #ffffff66;
-  border-radius: 14px;
+  width: 52px;
+  height: 52px;
+  flex: none;
+  color: var(--skill-color);
+}
+.skill-logo svg { display: block; width: 48px; height: 48px; }
+.skill-logo .brand-mark { fill: currentColor; }
+.skill-lettermark {
+  border-radius: 10px;
   color: #fff;
-  background: #285c9e;
-  box-shadow: 0 8px 16px #21477826;
+  background: var(--skill-color);
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: -.04em;
 }
-.skill-card::before {
-  width: 54px;
-  height: 54px;
-  border: 5px solid #ffffffa8;
-  border-radius: 16px;
-  content: '';
-  transform: rotate(-8deg);
+.skill-name {
+  display: block;
+  max-width: 100%;
+  font-size: .8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  text-align: center;
 }
-.skill-1 { background: #e65a32; }
-.skill-2 { background: #2574b8; }
-.skill-3 { background: #f6da3d; }
-.skill-4 { background: #202738; }
-.skill-5 { background: #137db1; }
-.skill-6 { background: #dd5c2b; }
 
 @media (max-width: 980px) {
   .portfolio-grid { grid-template-columns: minmax(230px, 1fr) minmax(0, 2fr); }
   .skills-column { grid-column: 1 / -1; }
-  .skills-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 650px) {
   .site-header { align-items: flex-start; flex-direction: column; gap: 5px; }
@@ -193,5 +215,4 @@ h2 { margin-bottom: 10px; font-size: clamp(1.5rem, 1.8vw, 2rem); }
   .preview-content { min-height: 230px; }
   .preview-picture { width: 90%; height: 125px; }
   .skills-column { grid-column: auto; }
-  .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
