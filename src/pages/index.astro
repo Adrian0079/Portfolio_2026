@@ -1,8 +1,12 @@
 ---
 import '../styles/global.css';
+import { hardSkillGroups, softSkills } from '../data/skills';
 
-const skillTiles = [1, 2, 3, 4, 5, 6];
 const projects = [1, 2];
+const skillSections = [
+  { id: 'hard-skills', title: 'Hard Skills', groups: hardSkillGroups },
+  { id: 'soft-skills', title: 'Soft Skills', groups: [{ id: 'soft-skills-list', title: '', skills: softSkills }] },
+];
 ---
 
 <!doctype html>
@@ -81,11 +85,28 @@ const projects = [1, 2];
           <span class="eyebrow">Herramientas</span>
           <h2 id="skills-heading">Habilidades</h2>
         </div>
-        <div class="skills-grid" aria-hidden="true">
-          {skillTiles.map((tile) => (
-            <div class={'skill-card skill-' + tile}></div>
-          ))}
-        </div>
+        {skillSections.map((section) => (
+          <section class="skill-group" aria-labelledby={section.id}>
+            <h3 id={section.id}>{section.title}</h3>
+            {section.groups.map((group) => (
+              <div class="skill-subgroup">
+                {group.title && <h4 id={group.id}>{group.title}</h4>}
+                <ul class="skills-grid" aria-labelledby={group.title ? group.id : section.id}>
+                  {group.skills.map((skill) => (
+                    <li class="skill-card" style={'--skill-color: ' + skill.color}>
+                      {skill.svg ? (
+                        <span class="skill-logo" aria-hidden="true" set:html={skill.svg}></span>
+                      ) : (
+                        <span class="skill-logo skill-lettermark" aria-hidden="true">{skill.initials}</span>
+                      )}
+                      <span class="skill-name">{skill.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </section>
+        ))}
       </aside>
     </main>
   </body>
