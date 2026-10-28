@@ -56,9 +56,9 @@ const discipline = icon('<circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/
 const persuasion = icon('<path d="M4 4h16v12H9l-5 4V4Z"/><path d="M8 9h8m-8 3h5"/>');
 const strategy = icon('<path d="M5 20h14M7 17h10l-1-6H8l-1 6Zm1-6-2-5 4 2 2-5 2 5 4-2-2 5"/>');
 
-// Names come from the supplied skills list. A few products without a redistributable
-// icon in Simple Icons use a neutral lettermark; general skills use outline symbols.
-export const skills: Skill[] = [
+// Names come from the supplied skills list. Products without a Simple Icons entry
+// use a neutral lettermark; general skills use outline symbols.
+export const hardSkills: Skill[] = [
   symbol('SD-WAN', network),
   symbol('Firewalls', shield),
   symbol('Monitoreo de redes', monitor),
@@ -92,6 +92,9 @@ export const skills: Skill[] = [
   brand('Bitcoin', siBitcoin),
   brand('Ethereum', siEthereum),
   symbol('CFD trading', chart),
+];
+
+export const softSkills: Skill[] = [
   symbol('Trabajo en equipo', team),
   symbol('Creatividad', bulb),
   symbol('Proactividad', bolt),
