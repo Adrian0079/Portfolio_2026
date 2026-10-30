@@ -2,7 +2,13 @@
 import '../styles/global.css';
 import { hardSkillGroups, softSkills } from '../data/skills';
 
-const projects = [1, 2];
+const projectCategories = [
+  { id: 'networking', name: 'Networking & Infrastructure', face: 'front', color: '#2563a8', ink: '#fff', path: 'M108 230H240V390H80V258A28 28 0 0 1 108 230Z' },
+  { id: 'frontend', name: 'Front-End Dev', face: 'front', color: '#f28a35', ink: '#281809', path: 'M240 390H400V522A28 28 0 0 1 372 550H240Z' },
+  { id: 'electronics', name: 'Electronics', face: 'front', color: '#237142', ink: '#fff', path: 'M240 230H372A28 28 0 0 1 400 258V390H240Z' },
+  { id: 'plc', name: 'PLC', face: 'front', color: '#5c6570', ink: '#fff', path: 'M80 390H240V550H108A28 28 0 0 1 80 522Z' },
+  { id: 'cad', name: 'CAD Design', face: 'top', color: '#b83238', ink: '#fff', path: 'M315 155H475L390 240H230Z' },
+];
 const skillSections = [
   { id: 'hard-skills', title: 'Hard Skills', groups: hardSkillGroups },
   { id: 'soft-skills', title: 'Soft Skills', groups: [{ id: 'soft-skills-list', title: '', skills: softSkills }] },
@@ -57,25 +63,39 @@ const skillSections = [
           <h2 id="projects-heading">Proyectos</h2>
         </div>
 
-        <div class="project-list">
-          {projects.map((project) => (
-            <article class="project-card" aria-label={'Proyecto visual ' + project}>
-              <div class="project-preview" aria-hidden="true">
-                <div class="preview-toolbar" aria-hidden="true">
-                  <span class="preview-dots"><i></i><i></i><i></i></span>
-                  <span class="preview-address"></span>
-                </div>
-                <div class="preview-content" aria-hidden="true">
-                  <span class="preview-picture"></span>
-                  <span class="preview-block"></span>
-                  <span class="preview-block short"></span>
-                </div>
-              </div>
-              <div class="project-body" aria-hidden="true">
-                <span class="skeleton-line"></span>
-                <span class="skeleton-line short"></span>
-              </div>
-            </article>
+        <div class="project-cube" role="group" aria-label="Categorías de proyectos">
+          <svg class="cube-drawing" viewBox="40 40 550 540" aria-hidden="true" focusable="false">
+            <path class="cube-face cube-face--top" d="M90 240 230 80H550L390 240Z" />
+            <path class="cube-face cube-face--right" d="M390 240 550 80V400L390 540Z" />
+            {projectCategories.filter((category) => category.face === 'top').map((category) => (
+              <path class={'cube-tile cube-tile--' + category.id} d={category.path} style={'--tile-color: ' + category.color} />
+            ))}
+            <g class="cube-lines">
+              <path d="M90 240 230 80H550V400L390 540" />
+              <path d="M550 80 390 240" />
+              <path d="M240 230 390 80M164.375 155H475" />
+              <path d="M400 390 550 240M475 155V465.625" />
+            </g>
+            <rect class="cube-face cube-face--front" x="80" y="230" width="320" height="320" rx="28" />
+            {projectCategories.filter((category) => category.face === 'front').map((category) => (
+              <path class={'cube-tile cube-tile--' + category.id} d={category.path} style={'--tile-color: ' + category.color} />
+            ))}
+            <g class="cube-lines">
+              <rect x="80" y="230" width="320" height="320" rx="28" />
+              <path d="M240 230V550M80 390H400" />
+            </g>
+          </svg>
+          {projectCategories.map((category) => (
+            <button
+              class={'cube-button cube-button--' + category.id}
+              id={'projects-' + category.id}
+              type="button"
+              style={'--tile-ink: ' + category.ink}
+              data-project-category={category.id}
+              aria-pressed="false"
+            >
+              <span class="cube-button-label">{category.name}</span>
+            </button>
           ))}
         </div>
       </section>
@@ -112,3 +132,17 @@ const skillSections = [
     </main>
   </body>
 </html>
+
+<script>
+  const categoryButtons = document.querySelectorAll<HTMLButtonElement>('[data-project-category]');
+
+  categoryButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const selectCategory = button.getAttribute('aria-pressed') !== 'true';
+
+      categoryButtons.forEach((categoryButton) => {
+        categoryButton.setAttribute('aria-pressed', String(categoryButton === button && selectCategory));
+      });
+    });
+  });
+</script>
