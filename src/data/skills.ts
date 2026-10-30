@@ -2,14 +2,14 @@ import {
   siArduino,
   siAstro,
   siAutocad,
-  siBitcoin,
   siCisco,
   siCss,
-  siEthereum,
+  siEspressif,
   siGit,
   siGithub,
   siHtml5,
   siJavascript,
+  siKicad,
   siLabview,
   siPython,
   siReact,
@@ -22,6 +22,7 @@ import {
 export type Skill = {
   name: string;
   color: string;
+  description?: string;
   svg?: string;
   initials?: string;
 };
@@ -45,10 +46,11 @@ const shield = icon('<path d="M12 2 20 5v6c0 5-3.4 8.6-8 11-4.6-2.4-8-6-8-11V5l8
 const monitor = icon('<rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 12h3l2-4 2 7 2-3h2M9 21h6m-3-3v3"/>');
 const cycle = icon('<path d="M20 7V3l-3 2a8 8 0 0 0-13 6M4 17v4l3-2a8 8 0 0 0 13-6"/><path d="M17 5h3M4 19h3"/>');
 const database = icon('<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>');
-const circuit = icon('<path d="M3 7h6v5h6V5h6M3 17h8v-4h6v4h4"/><circle cx="3" cy="7" r="1"/><circle cx="21" cy="5" r="1"/><circle cx="21" cy="17" r="1"/>');
-const pneumatic = icon('<circle cx="6" cy="12" r="3"/><circle cx="18" cy="12" r="3"/><path d="M9 12h6M6 9V5h12v4M6 15v4h12v-4"/>');
+const phoneDiagnostics = icon('<rect x="5" y="2" width="14" height="20" rx="2"/><path d="M10 5h4m-5 8h2l1-3 2 6 1-3h2m-6 6h2"/>');
+const microsoldering = icon('<path d="m3 21 8-8 2 2-8 8H3v-2Zm8-8 5-5 2 2-5 5M16 8l2-2 3 3-2 2"/><path d="M16 19h5m-3-3v6"/>');
 const blockchain = icon('<rect x="2" y="9" width="6" height="6" rx="1"/><rect x="16" y="2" width="6" height="6" rx="1"/><rect x="16" y="16" width="6" height="6" rx="1"/><path d="M8 12h4l5-6M12 12l5 7"/>');
 const chart = icon('<path d="M3 3v18h18M7 16l4-5 3 2 5-7"/><path d="M17 6h2v2"/>');
+const tradingTerminal = icon('<rect x="2" y="3" width="20" height="16" rx="2"/><path d="M2 8h20M6 15l3-3 3 2 4-4 2 2M9 22h6m-3-3v3"/>');
 const team = icon('<circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20v-2a6 6 0 0 1 12 0v2H2Zm13 0h7v-2a5 5 0 0 0-6-4.9"/>');
 const bulb = icon('<path d="M9 18h6m-5 3h4M8 15a7 7 0 1 1 8 0c-.8.7-1 1.5-1 3H9c0-1.5-.2-2.3-1-3Z"/>');
 const bolt = icon('<path d="m13 2-9 12h7l-1 8 10-12h-7l0-8Z"/>');
@@ -60,14 +62,14 @@ const strategy = icon('<path d="M5 20h14M7 17h10l-1-6H8l-1 6Zm1-6-2-5 4 2 2-5 2 
 // use a neutral lettermark; general skills use outline symbols.
 export const hardSkillGroups: { id: string; title: string; skills: Skill[] }[] = [
   {
-    id: 'industrial-networks',
-    title: 'Industrial Networks & Networking',
+    id: 'networking-infrastructure',
+    title: 'Networking & Infrastructure',
     skills: [
       symbol('SD-WAN', network),
-      symbol('Firewalls', shield),
-      symbol('Monitoreo de redes', monitor),
+      symbol('Firewall management', shield),
+      symbol('Network monitoring & troubleshooting', monitor),
       letters('Versa Director', 'VD', '#294a8d'),
-      brand('Cisco Prime', siCisco),
+      brand('Cisco Prime Infrastructure', siCisco),
       letters('PuTTY', 'P', '#2b4f81'),
       letters('ServiceNow', 'SN', '#2e8068'),
     ],
@@ -76,19 +78,19 @@ export const hardSkillGroups: { id: string; title: string; skills: Skill[] }[] =
     id: 'version-control-tools',
     title: 'Version Control & Other Tools',
     skills: [
-      letters('Word', 'W', '#185abd'),
-      letters('Excel', 'X', '#107c41'),
+      letters('Microsoft Word', 'W', '#185abd'),
+      letters('Microsoft Excel', 'X', '#107c41'),
       brand('Git', siGit),
       brand('GitHub', siGithub),
       brand('Trello', siTrello),
-      symbol('Scrum', cycle),
+      symbol('SCRUM', cycle),
     ],
   },
   {
     id: 'programming-languages',
     title: 'Programming Languages',
     skills: [
-      brand('TypeScript', siTypescript),
+      brand('TypeScript (Advanced)', siTypescript),
       brand('JavaScript', siJavascript, '#9a7900'),
       brand('Python', siPython),
       symbol('SQL', database),
@@ -98,7 +100,7 @@ export const hardSkillGroups: { id: string; title: string; skills: Skill[] }[] =
     id: 'web-development',
     title: 'Web Development',
     skills: [
-      brand('React', siReact, '#087ea4'),
+      brand('React JS', siReact, '#087ea4'),
       brand('Astro', siAstro),
       brand('HTML', siHtml5),
       brand('CSS', siCss),
@@ -110,28 +112,44 @@ export const hardSkillGroups: { id: string; title: string; skills: Skill[] }[] =
     title: 'Automation and Control',
     skills: [
       brand('LabVIEW', siLabview, '#b88700'),
-      brand('PLC Siemens', siSiemens),
+      brand('PLC Programming (Siemens)', siSiemens),
       brand('Arduino', siArduino),
-      symbol('Circuitos electrónicos', circuit),
-      symbol('Circuitos neumáticos', pneumatic),
+    ],
+  },
+  {
+    id: 'electronics',
+    title: 'Electronics',
+    skills: [
+      symbol('Basic iPhone logic board diagnostics', phoneDiagnostics),
+      symbol('Basic microsoldering (iPhone)', microsoldering),
+      brand('Electronic circuit design (KiCad)', siKicad),
+      brand('ESP32', siEspressif),
     ],
   },
   {
     id: 'cad-design',
     title: 'CAD Design',
     skills: [
-      letters('SolidWorks', 'SW', '#d52430'),
+      letters('SolidWorks (CSWA / CSWP level)', 'SW', '#d52430'),
       brand('AutoCAD', siAutocad),
     ],
   },
   {
-    id: 'blockchain-knowledge',
-    title: 'Blockchain Knowledge',
+    id: 'financial-markets-blockchain',
+    title: 'Financial Markets & Blockchain Knowledge',
     skills: [
-      symbol('Blockchain', blockchain),
-      brand('Bitcoin', siBitcoin),
-      brand('Ethereum', siEthereum),
-      symbol('CFD trading', chart),
+      {
+        ...symbol('Blockchain', blockchain),
+        description: 'Decentralized networks and peer-to-peer (P2P) transactions.',
+      },
+      {
+        ...symbol('CFD Trading', chart),
+        description: 'Technical and fundamental analysis, risk management, trading strategies and proprietary trading firms (prop firms).',
+      },
+      {
+        ...symbol('Trading Software', tradingTerminal),
+        description: 'MetaTrader 4 (MT4), MetaTrader 5 (MT5) and trading platform functionalities.',
+      },
     ],
   },
 ];

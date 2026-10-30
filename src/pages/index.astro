@@ -82,8 +82,8 @@ const skillSections = [
 
       <aside class="skills-column" aria-labelledby="skills-heading">
         <div class="section-heading skills-heading">
-          <span class="eyebrow">Herramientas</span>
-          <h2 id="skills-heading">Habilidades</h2>
+          <span class="eyebrow">Tools</span>
+          <h2 id="skills-heading">Skills</h2>
         </div>
         {skillSections.map((section) => (
           <section class="skill-group" aria-labelledby={section.id}>
@@ -93,13 +93,14 @@ const skillSections = [
                 {group.title && <h4 id={group.id}>{group.title}</h4>}
                 <ul class="skills-grid" aria-labelledby={group.title ? group.id : section.id}>
                   {group.skills.map((skill) => (
-                    <li class="skill-card" style={'--skill-color: ' + skill.color}>
+                    <li class={'skill-card' + (skill.description ? ' skill-card--detailed' : '')} style={'--skill-color: ' + skill.color}>
                       {skill.svg ? (
                         <span class="skill-logo" aria-hidden="true" set:html={skill.svg}></span>
                       ) : (
                         <span class="skill-logo skill-lettermark" aria-hidden="true">{skill.initials}</span>
                       )}
                       <span class="skill-name">{skill.name}</span>
+                      {skill.description && <p class="skill-description">{skill.description}</p>}
                     </li>
                   ))}
                 </ul>

@@ -224,6 +224,19 @@ h2 { margin-bottom: 10px; font-size: clamp(1.5rem, 1.8vw, 2rem); }
   overflow-wrap: anywhere;
   text-align: center;
 }
+.skill-card--detailed {
+  grid-column: 1 / -1;
+  padding: 18px 16px;
+}
+.skill-card--detailed .skill-name { font-size: .9rem; }
+.skill-description {
+  align-self: stretch;
+  margin: 0;
+  color: #42536d;
+  font-size: .8rem;
+  line-height: 1.45;
+  text-align: left;
+}
 
 @media (max-width: 980px) {
   .portfolio-grid { grid-template-columns: minmax(230px, 1fr) minmax(0, 2fr); }
