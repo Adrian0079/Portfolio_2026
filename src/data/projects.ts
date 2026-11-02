@@ -1,0 +1,42 @@
+export const projectCategories = [
+  {
+    id: 'networking',
+    name: 'Networking & Infrastructure',
+    face: 'front',
+    color: '#2563a8',
+    ink: '#fff',
+    path: 'M108 230H240V390H80V258A28 28 0 0 1 108 230Z',
+  },
+  {
+    id: 'frontend',
+    name: 'Front-End Dev',
+    face: 'front',
+    color: '#f28a35',
+    ink: '#281809',
+    path: 'M240 390H400V522A28 28 0 0 1 372 550H240Z',
+  },
+  {
+    id: 'electronics',
+    name: 'Electronics',
+    face: 'front',
+    color: '#237142',
+    ink: '#fff',
+    path: 'M240 230H372A28 28 0 0 1 400 258V390H240Z',
+  },
+  {
+    id: 'plc',
+    name: 'PLC',
+    face: 'front',
+    color: '#5c6570',
+    ink: '#fff',
+    path: 'M80 390H240V550H108A28 28 0 0 1 80 522Z',
+  },
+  {
+    id: 'cad',
+    name: 'CAD Design',
+    face: 'top',
+    color: '#b83238',
+    ink: '#fff',
+    path: 'M315 155H475L390 240H230Z',
+  },
+];

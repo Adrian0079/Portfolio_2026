@@ -1,0 +1,42 @@
+---
+import { projectCategories } from '../../data/projects';
+
+export function getStaticPaths() {
+  return projectCategories.map((category) => ({
+    params: { categoria: category.id },
+    props: { categoryName: category.name },
+  }));
+}
+
+interface Props {
+  categoryName: string;
+}
+
+const { categoryName } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{categoryName} | Proyectos y certificaciones</title>
+  </head>
+  <body>
+    <main>
+      <h1>Proyectos y certificaciones</h1>
+    </main>
+  </body>
+</html>
+
+<style>
+  :global(body) {
+    margin: 0;
+    color: #17233a;
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  main { padding: 32px clamp(20px, 4vw, 64px); }
+  h1 { margin: 0; font-size: clamp(1.7rem, 4vw, 2.5rem); line-height: 1.2; }
+</style>

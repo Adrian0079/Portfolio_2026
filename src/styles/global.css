@@ -144,6 +144,7 @@ h2 { margin-bottom: 10px; font-size: clamp(1.5rem, 1.8vw, 2rem); }
   font-weight: 600;
   line-height: 1.25;
   text-align: center;
+  text-decoration: none;
   cursor: pointer;
 }
 .cube-button-label { display: block; max-width: 100%; }
@@ -168,21 +169,17 @@ h2 { margin-bottom: 10px; font-size: clamp(1.5rem, 1.8vw, 2rem); }
   transform: translate(-50%, -50%);
   white-space: nowrap;
 }
-.project-cube:has(.cube-button--networking:is(:hover, :focus-visible, [aria-pressed="true"])) .cube-tile--networking,
-.project-cube:has(.cube-button--electronics:is(:hover, :focus-visible, [aria-pressed="true"])) .cube-tile--electronics,
-.project-cube:has(.cube-button--plc:is(:hover, :focus-visible, [aria-pressed="true"])) .cube-tile--plc,
-.project-cube:has(.cube-button--frontend:is(:hover, :focus-visible, [aria-pressed="true"])) .cube-tile--frontend,
-.project-cube:has(.cube-button--cad:is(:hover, :focus-visible, [aria-pressed="true"])) .cube-tile--cad {
+.project-cube:has(.cube-button--networking:is(:hover, :focus-visible)) .cube-tile--networking,
+.project-cube:has(.cube-button--electronics:is(:hover, :focus-visible)) .cube-tile--electronics,
+.project-cube:has(.cube-button--plc:is(:hover, :focus-visible)) .cube-tile--plc,
+.project-cube:has(.cube-button--frontend:is(:hover, :focus-visible)) .cube-tile--frontend,
+.project-cube:has(.cube-button--cad:is(:hover, :focus-visible)) .cube-tile--cad {
   filter: brightness(1.14);
 }
 .cube-button:focus-visible .cube-button-label {
   border-radius: 2px;
   outline: 2px solid currentColor;
   outline-offset: 5px;
-}
-.cube-button[aria-pressed="true"] .cube-button-label {
-  text-decoration: underline;
-  text-underline-offset: .22em;
 }
 @media (prefers-reduced-motion: reduce) {
   .cube-tile { transition: none; }
